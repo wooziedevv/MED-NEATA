@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ata & Medine</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #b5c7ff, #ffd6e0);
+    color: #2b2b2b;
+    text-align: center;
+  }
+
+  .login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  input[type="password"] {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    width: 220px;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  button {
+    margin-top: 12px;
+    padding: 10px 25px;
+    border: none;
+    background-color: #ffffff;
+    color: #0077b6;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background-color: #0077b6;
+    color: white;
+  }
+
+  .main-content {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 1s;
+  }
+
+  h1 {
+    font-size: 2em;
+    margin-top: 20px;
+    color: #004d7a;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 40px auto;
+    max-width: 1000px;
+  }
+
+  .photo-frame {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1));
+    border-radius: 15px;
+    border: 2px solid rgba(255,255,255,0.4);
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    color: rgba(60,60,60,0.7);
+  }
+
+  .memory-box {
+    background-color: rgba(255,255,255,0.6);
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 600px;
+  }
+
+  textarea {
+    width: 100%;
+    height: 120px;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    resize: none;
+    background-color: rgba(255,255,255,0.9);
+    font-size: 14px;
+  }
+
+  #countup {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #004d7a;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+</style>
+</head>
+<body>
+
+<div class="login-container" id="login">
+  <h2 style="color:#0077b6;">💙 Ata &amp; Medine 💗</h2>
+  <p>Giriş yapmak için şifreyi gir:</p>
+  <input type="password" id="password" placeholder="Şifre">
+  <button onclick="checkPassword()">Giriş Yap</button>
+  <p style="font-size:12px;opacity:0.8;margin-top:10px;">(Şifre: MedineAta)</p>
+</div>
+
+<div class="main-content" id="content">
+  <h1>💞 Ata &amp; Medine’nin Dünyası 💞</h1>
+  <p>Tanışma Tarihimiz: <strong>16 Ekim 2025</strong></p>
+  <div id="countup"></div>
+
+  <!-- 🎵 YouTube üzerinden gizli müzik -->
+  <iframe width="0" height="0" 
+  src="https://www.youtube.com/embed/hU1nA2W0Y9g?autoplay=1&loop=1&playlist=hU1nA2W0Y9g" 
+  frameborder="0" allow="autoplay"></iframe>
+
+  <h2 style="margin-top:40px; color:#0077b6;">📸 Hatıralarımız</h2>
+  <div class="gallery">
+    <div class="photo-frame">Resim yakında eklenecek 💗</div>
+    <div class="photo-frame">Resim yakında eklenecek 💗</div>
+    <div class="photo-frame">Resim yakında eklenecek 💗</div>
+    <div class="photo-frame">Resim yakında eklenecek 💗</div>
+    <div class="photo-frame">Resim yakında eklenecek 💗</div>
+    <div class="photo-frame">Resim yakında eklenecek 💗</div>
+    <div class="photo-frame">Resim yakında eklenecek 💗</div>
+    <div class="photo-frame">Resim yakında eklenecek 💗</div>
+    <div class="photo-frame">Resim yakında eklenecek 💗</div>
+    <div class="photo-frame">Resim yakında eklenecek 💗</div>
+  </div>
+
+  <div class="memory-box">
+    <h3 style="color:#004d7a;">📖 Anı Defteri</h3>
+    <textarea placeholder="Anını buraya yaz..."></textarea>
+    <p>Bu anılar kalbimizde sonsuza dek 💙💗</p>
+  </div>
+</div>
+
+<script>
+function checkPassword() {
+  const raw = document.getElementById('password').value || "";
+  const normalized = raw.replace(/\s+/g, '').toLowerCase();
+  if (normalized === 'medineata') {
+    document.getElementById('login').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+  } else {
+    alert("Yanlış şifre 💔");
+  }
+}
+
+const startDate = new Date("2025-10-16T00:00:00");
+function updateCountup() {
+  const now = new Date();
+  const diff = now - startDate;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+  document.getElementById('countup').innerHTML =
+    `💙 ${days} gün, ${hours} saat, ${minutes} dakika, ${seconds} saniyedir birlikteyiz 💗`;
+}
+setInterval(updateCountup, 1000);
+updateCountup();
+</script>
+</body>
+</html>
